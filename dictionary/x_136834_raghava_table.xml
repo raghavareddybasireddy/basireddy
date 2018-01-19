@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Raghava Table" max_length="40" name="x_136834_raghava_table" type="collection">
+        <element label="Caller" mandatory="true" max_length="32" name="caller" reference="sys_user" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" default="Inquiry/Help" label="Category" max_length="40" name="category" type="string">
+            <choice>
+                <element label="Inquiry/Help" sequence="0" value="Inquiry/Help"/>
+                <element label="Software" sequence="1" value="Software"/>
+                <element label="Hardware" sequence="2" value="Hardware"/>
+                <element label="Network" sequence="3" value="Network"/>
+                <element label="Database" sequence="4" value="Database"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Contact type" max_length="40" name="contacttype" type="string">
+            <choice/>
+        </element>
+        <element choice="1" label="Impact" max_length="40" name="impact" type="integer">
+            <choice/>
+        </element>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Short Description" max_length="40" name="shortdescription" type="string"/>
+        <element choice="1" label="State" max_length="40" name="state" type="integer">
+            <choice/>
+        </element>
+        <element attributes="edge_encryption_enabled=true" choice="1" dependent="category" dependent_on_field="category" label="Subcategory" max_length="40" name="subcategory" type="string" use_dependent_field="true">
+            <choice>
+                <element dependent_value="Inquiry/Help" label="Antivirus" sequence="0" value="Antivirus"/>
+                <element dependent_value="Software" label="Email" sequence="1" value="Email"/>
+                <element dependent_value="Hardware" label="CPU" sequence="2" value="CPU"/>
+                <element dependent_value="Network" label="DHCP" sequence="3" value="DHCP"/>
+                <element dependent_value="Database" label="DB2" sequence="4" value="DB2"/>
+            </choice>
+        </element>
+        <element choice="1" label="Urgency" max_length="40" name="urgency" type="integer">
+            <choice/>
+        </element>
+        <index name="index">
+            <element name="caller"/>
+        </index>
+    </element>
+</database>
